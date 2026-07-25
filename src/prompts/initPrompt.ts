@@ -23,6 +23,7 @@ export async function initPrompt(): Promise<InitConfig> {
         { label: "Router Vue", value: "router-vue" },
         { label: "Pinia", value: "pinia" },
         { label: "Vuetify", value: "vuetify" },
+        { label: "Vuetify/0", value: "vuetify/0" },
         { label: "Axios", value: "axios" },
         { label: "VueUse", value: "vueUse" },
         { label: "Day.js", value: "dayjs" },

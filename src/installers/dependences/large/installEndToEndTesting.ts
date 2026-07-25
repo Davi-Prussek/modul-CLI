@@ -1,8 +1,8 @@
 import { npm } from "../npm.js"
 
-export async function install{{name}}() {
+export async function installEndToEndTesting() {
     await npm([
     "install",
-    "{{package}}"
+    "-D playwright"
     ])
 }

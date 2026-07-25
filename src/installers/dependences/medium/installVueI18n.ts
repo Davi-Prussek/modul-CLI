@@ -1,8 +1,8 @@
 import { npm } from "../npm.js"
 
-export async function install{{name}}() {
+export async function installVueI18n() {
     await npm([
     "install",
-    "{{package}}"
+    "vue-i18n"
     ])
 }

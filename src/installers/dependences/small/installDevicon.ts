@@ -1,8 +1,8 @@
 import { npm } from "../npm.js"
 
-export async function install{{name}}() {
+export async function installDevicon() {
     await npm([
     "install",
-    "{{package}}"
+    "devicon"
     ])
 }
