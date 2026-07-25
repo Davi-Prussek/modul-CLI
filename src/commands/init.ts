@@ -1,7 +1,7 @@
-#!/usr/bin/env node
+import { initPrompt } from "../prompts/initPrompt.js";
+import { initExecutor } from "../executors/initExecutor.js";
 
-import cac from "cac";
-const cli = cac("modul")
-cli.command(
-    "init", 
-    "Initialize the modul",)
+export async function init() {
+    const projectConfig = await initPrompt()
+    initExecutor()
+}
