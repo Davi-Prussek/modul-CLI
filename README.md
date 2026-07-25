@@ -2,24 +2,24 @@
 
 ## Description
 
-Modul CLI is a package of custom commands for Vue.js that automates repetitive tasks, standardizes project structure, and accelerates development. In addition to creating configurable projects, the CLI provides commands to generate and organize views, components, sections, and other resources, maintaining a consistent and scalable architecture.
+Modul CLI is an opinionated CLI for Vue.js that automates repetitive tasks, standardizes project structure, and accelerates development. Beyond project scaffolding, it provides intelligent commands to generate and organize views, components, sections, and other resources while maintaining a clean, consistent, and scalable architecture.
 
 ## Summary
 
 - [Core](#core)
 - [Installation](#installation)
-- [View Manipulation commands](#view-manipulation-commands)
-- [Section Manipulation commands](#section-manipulation-commands)
-- [Component Manipulation commands](#component-manipulation-commands)
+- [View commands](#view-Commands)
+- [Section commands](#section-commands)
+- [Component commands](#component-commands)
 
 ## Features
 
-During project creation, you can choose which technologies to include:
+During project creation, you can choose which technologies and tools should be included in your application.
 
-### Core
+## Core
 
 - TypeScript
-- Vue Router
+- Router Vue
 - Pinia
 - Tailwind CSS
 - Vuetify
@@ -37,13 +37,13 @@ During project creation, you can choose which technologies to include:
 - Prettier
 - Vitest
 - End-to-End Testing
-- More resources will come as the need arises.
+- More integrations will be added over time.
 
 ## Installation
 
 ### npm init modul@latest
 
-This command would be the custom launcher, where it would ask:
+This command is the custom launcher, where it will ask:
 
 ```markdown
 - Project name
@@ -57,7 +57,7 @@ And it creates the personalized environment needed to execute all the commands w
 
 After that, it automatically runs `npm install`.
 
-Finally, he would create the folder structure like this:
+Finally, the CLI creates the following project structure:
 
 ```markdown
 
@@ -114,13 +114,25 @@ Finally, he would create the folder structure like this:
 └── README.md
 ```
 
-## View Manipulation commands
+## Commands
 
-The module provides commands for the faster and more organized creation of components, views, or view sections, featuring cleaner exports and the option to define responsiveness configurations at the time of component creation.
+The CLI provides commands for the faster and more organized creation of components, views, or view sections, featuring cleaner exports and the option to define responsiveness configurations at the time of component creation.
 
 ---
 
-### modul create view "View-Name"
+### View commands
+
+---
+
+#### View Summary
+
+- [modul create view](#modul-create-view-view-name)
+- [modul create view-page](#modul-create-view-page-view-name)
+- [modul create view-section](#modul-create-view-section-view-name)
+
+---
+
+#### modul create view "View-Name"
 
 This command would prompt for the view name and generate a structure like this:
 
@@ -135,7 +147,7 @@ After the system will ask if you want to add the view in router-vue.
 
 ---
 
-### modul create view-page "View-Name"
+#### modul create view-page "View-Name"
 
 This command would prompt for the view name and generate a structure like this:
 
@@ -152,7 +164,7 @@ After the system will ask if you want to add the view in router-vue.
 
 ---
 
-### modul create view-section "View-Name"
+#### modul create view-section "View-Name"
 
 This command would prompt for the view name and generate a structure like this:
 
@@ -168,9 +180,18 @@ After the system will ask if you want to add the view in router-vue.
 
 ---
 
-## Section Manipulation commands
+### Section commands
 
-### modul create section "Section-Name"
+---
+
+#### Section Summary
+
+- [modul create section](#modul-create-section-section-name)
+- [modul create section-responsive](#modul-create-section-responsive-section-name)
+
+---
+
+#### modul create section "Section-Name"
 
 This command would prompt for the Section name, analyze the application's folder structure, and look for a `views` folder; if there were only a single view, it would finish there, generating a structure like this:
 
@@ -186,7 +207,7 @@ And if the selected `view` doesn't have a section folder, it will create.
 
 ---
 
-### modul create section-responsive "Section-Name"
+#### modul create section-responsive "Section-Name"
 
 This command would prompt for the Section name, analyze the application's folder structure, and look for a `views` folder; if there were only a single view, it would finish there, generating a structure like this:
 
@@ -204,9 +225,9 @@ And if the selected `view` doesn't have a section folder, it will create.
 
 ---
 
-## Component Manipulation commands
+### Component commands
 
-### modul create component "Component-Name"
+#### modul create component "Component-Name"
 
 This command would prompt for the Component name, ask which type of component you wanna create, if he will be a:
 
