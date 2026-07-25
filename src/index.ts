@@ -1,25 +1,13 @@
-import { intro,outro,select } from "@clack/prompts"
+#!/usr/bin/env node
 
-intro('vue custom CLI')
+import { cac } from "cac";
 
-const opcao = await select({
-  message: 'O que deseja fazer?',
-  options: [
-    {
-      value: 'create',
-      label: 'Criar projeto'
-    },
-    {
-      value: 'component',
-      label: 'Criar componente'
-    },
-    {
-      value: 'exit',
-      label: 'Sair'
-    }
-  ]
-});
+const cli = cac("create-modul");
 
-console.log(opcao);
+cli
+  .command("")
+  .action(() => {
+    console.log("Welcome to Modul-CLI!");
+  });
 
-outro('Até mais!');
+cli.parse()
