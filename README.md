@@ -4,6 +4,14 @@
 
 Modul CLI is a package of custom commands for Vue.js that automates repetitive tasks, standardizes project structure, and accelerates development. In addition to creating configurable projects, the CLI provides commands to generate and organize views, components, sections, and other resources, maintaining a consistent and scalable architecture.
 
+## Summary
+
+- [Core](#core)
+- [Installation](#installation)
+- [View Manipulation commands](#view-manipulation-commands)
+- [Section Manipulation commands](#section-manipulation-commands)
+- [Component Manipulation commands](#component-manipulation-commands)
+
 ## Features
 
 During project creation, you can choose which technologies to include:
