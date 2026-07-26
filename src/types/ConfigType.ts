@@ -1,4 +1,4 @@
-export interface InitConfig {
+export interface ConfigType {
     ProjectName: string
     use_typeScript: boolean
     features: string[]

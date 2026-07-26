@@ -1,0 +1,17 @@
+import {select} from "@clack/prompts";
+import { handleCancel } from "../utils/cancel.js";
+import type { InitType } from "../types/initType.ts"
+
+export async function initPrompt(): Promise<InitType> {
+
+const projectType = handleCancel( await select({
+    message: "Select an initialization mode:",
+    options: [
+        {label: 'Commands only', value: 'command'},
+        {label: 'Project Structure', value: 'project'},
+    ]}))
+
+return {
+    projectType
+};
+}

@@ -1,10 +1,10 @@
 import { text, confirm, select, groupMultiselect } from "@clack/prompts";
 import { handleCancel } from "../utils/cancel.js";
+import type { ConfigType } from "../types/ConfigType.js";
 
-import type { InitConfig } from "../types/initTypes.js";
 
-
-export async function initPrompt(): Promise<InitConfig> {
+export async function ConfigPrompt(): Promise<ConfigType> {
+  
   const ProjectName = handleCancel(
     await text({
     message: "Package name:",
@@ -57,14 +57,12 @@ export async function initPrompt(): Promise<InitConfig> {
       { label: "Tailwind CSS", value: "tailwind" },
       { label: "Bootstrap", value: "bootstrap" },
       { label: "Default", value: "Default" },
-    ],
-  })
-  )
+    ]}))
   const Inicialize_repository = handleCancel(
     await confirm({
     message: "Inicialize a git repository?",
   })
-  ) 
+  )
   return {
     ProjectName,
     use_typeScript,

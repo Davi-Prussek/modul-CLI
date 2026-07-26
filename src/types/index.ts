@@ -1,1 +1,2 @@
-export * from "./initTypes.js"
+export * from "./ConfigType.js"
+export * from "./initType.js"
