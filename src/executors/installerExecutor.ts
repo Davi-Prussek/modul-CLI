@@ -1,4 +1,6 @@
-const features = [
+//Esse arquivo foi usado em versões passadas porém não é mais necesário.
+
+/* const features = [
         { label: "Router Vue", value: "RouterVue", package: 'vue-router' },
         { label: "Pinia", value: "Pinia", package: 'pinia' },
         { label: "Vuetify", value: "Vuetify", package: 'vuetify' },
@@ -44,3 +46,4 @@ for (const feature of features) {
 }
 
 
+ */
