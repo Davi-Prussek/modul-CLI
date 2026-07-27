@@ -9,6 +9,7 @@ const projectType = handleCancel( await select({
     options: [
         {label: 'Commands only', value: 'command'},
         {label: 'Project Structure', value: 'project'},
+        {label: 'Copy template', value: 'copy'},
     ]}))
 
 return {

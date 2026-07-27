@@ -1,15 +1,18 @@
-import { text, confirm, select, groupMultiselect } from "@clack/prompts";
+import { text,intro, confirm, select, groupMultiselect } from "@clack/prompts";
 import { handleCancel } from "../../utils/cancel.js";
 import type { ConfigType } from "../../types/ConfigType.js";
 
 
 export async function ConfigPrompt(): Promise<ConfigType> {
-  
-  const ProjectName = handleCancel(
+  let ProjectName = handleCancel(
     await text({
     message: "Package name:",
+    placeholder: "modul-Project",
   })
   )
+  if (!ProjectName.trim()) {
+    ProjectName = "modul-project"
+  }
   const use_typeScript = handleCancel(
     await confirm({
     message: "Use TypeScript?",
@@ -74,7 +77,7 @@ options: {
     },
     {
       label: "Lucide Icons",
-      value: "install lucide-vue-next",
+      value: "install @lucide/vue",
     },
     {
       label: "Devicon",

@@ -1,3 +1,3 @@
 export interface InitType {
-    projectType: "command" | "project"
+    projectType: "command" | "project" | "copy"
 }
