@@ -1,11 +1,11 @@
-import type { ConfigType } from "./prompt/index.js";
+import type { ConfigType } from "./index.js";
 import { 
   InicializeRepository,
   recursos,
   projectName,
   useTypeScript,
   cssFramework,
- } from "./index.js"
+} from "./index.js"
 
 export async function ConfigPrompt(): Promise<ConfigType> {
   const ProjectName = await projectName()

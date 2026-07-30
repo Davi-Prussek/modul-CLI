@@ -1,10 +1,10 @@
 import { execa } from "execa";
 import { spinner } from "@clack/prompts";
-import type { ConfigType } from "../../types/ConfigType.js";
+import type { ConfigType } from "../../../types/ConfigType.js";
 import { cwd, stdin } from "node:process";
-import { vuetifyPrompt } from "../../prompts/init/initOptions/configPrompt/index.js";
+import { vuetifyPrompt } from "../../../prompts/init-modul/options/project_structure/questions/vuetifyPrompt.js";
 import path from "node:path";
-import { handleCancel } from "../../utils/cancel.js";
+import { handleCancel } from "../../../utils/cancel.js";
 const spin = spinner();
 
 export async function projectExecutor(config: ConfigType) {
@@ -40,6 +40,7 @@ export async function projectExecutor(config: ConfigType) {
   if (use_typeScript) {
     createVueArgs.push("--ts");
   }
+  if ("a" == "a") {}
   if (createVueArgs.length == 0) {
     createVueArgs = ["--default"];
   }
@@ -53,21 +54,17 @@ export async function projectExecutor(config: ConfigType) {
     //Nota mental: o ... serve pra tirar os elementos do array menor e jogar pro maior
     ...createVueArgs
   ]);
-  spin.message("Default Vue configuration set up!");
   //Configurar o caminho que a pasta vai ser criada
   const currentPath = path.resolve(projectName);
-  //Verifica se o eslint foi selecionado, caso seja, ele instala o oxlint@~1.73.0 pra não dar erro.
 
-  //Também verifica se o TypeScript foi selecionado, caso seja, ele instala o @vue/tsconfig pra não dar erro.
-  if (features.includes("--eslint") || use_typeScript) {
-    spin.message("Fixing Vue installation...");
+  //Verifica se o eslint foi selecionado, caso seja, ele instala o oxlint@~1.73.0 pra não dar erro.
+  if (features.includes("--eslint")) {
     await execa(
       "npm",
       [
         "install",
         "-D",
-        ...(features.includes("--eslint") ? ["oxlint@~1.73.0"] : []),
-/*         ...(use_typeScript ? ["@vue/tsconfig"] : []), */
+        ...["oxlint@~1.73.0"],
       ],
       {cwd: currentPath},
     );
@@ -84,17 +81,10 @@ export async function projectExecutor(config: ConfigType) {
         stdio: "inherit",
       });
     }
-    if (dependencias.length) {
-      spin.message("Dependencies installed!...");
-    }
-    spin.message("npm install...");
     await execa("npm", ["install"], { cwd: currentPath });
-    if (!Inicialize_repository) {
-      //Para o spin se não tiver repo pra adicionar
-      spin.stop("Application successfully created and configured!");
+    /* if (!Inicialize_repository) {
     } else {
-      spin.stop("Application successfully created and configured!");
-    }
+    } */
   } catch {
     console.log("Error during application creation or configuration!");
   }

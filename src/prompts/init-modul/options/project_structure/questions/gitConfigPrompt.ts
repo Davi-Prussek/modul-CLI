@@ -8,15 +8,11 @@ export async function gitConfigPrompt() {
       options: {
         "Git Actions": [
           {
-            label: "Add .gitignore?",
-            value: "gitignore",
-          },
-          {
             label: "Add README?",
             value: "readme",
           },
           {
-            label: "Add branch dev?",
+            label: "Use branch dev?",
             value: "branch",
           },
           {

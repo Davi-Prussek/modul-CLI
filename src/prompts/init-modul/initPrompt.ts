@@ -1,6 +1,6 @@
 import {select} from "@clack/prompts";
-import { handleCancel } from "./index.js";
-import type { InitType } from "./index.js"
+import { handleCancel } from "../../utils/cancel.js";
+import type { InitType } from "../../types/initType.js"
 
 export async function initPrompt(): Promise<InitType> {
 
