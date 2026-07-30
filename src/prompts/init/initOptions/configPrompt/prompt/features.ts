@@ -4,6 +4,8 @@ import { handleCancel } from "./index.js"
 export async function recursos() {
 const features = handleCancel(
     await groupMultiselect({
+      initialValues: [],
+      required: false,
     message: "Select features to include in your project:",
 options: {
   dependences: [

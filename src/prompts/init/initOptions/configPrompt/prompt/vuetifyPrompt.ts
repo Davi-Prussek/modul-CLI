@@ -7,11 +7,11 @@ export async function vuetifyPrompt() {
         options: [
             {
                 label: "Vuetify",
-                value: "install vuetify",
+                value: "vuetify",
             },
             {
                 label: "Vuetify/v0",
-                value: "install @vuetify/v0",
+                value: "@vuetify/v0",
             },
         ]
     }))
