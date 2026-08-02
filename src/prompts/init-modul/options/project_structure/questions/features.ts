@@ -37,45 +37,45 @@ options: {
   installers: [
     {
   label: "Axios",
-  value: "install axios"
+  value: "axios"
 },
 {
   label: "VueUse",
-  value: "install @vueuse/core"
+  value: "@vueuse/core"
 },
 {
   label: "Day.js",
-  value: "install dayjs"
+  value: "dayjs"
 },
 {
   label: "Zod",
-  value: "install zod"
+  value: "zod"
 },
 {
   label: "vuetify",
-  value: "install vuetify"
+  value: "vuetify"
 },
   ],
   icons: [
     {
       label: "Font Awesome",
-      value: "install @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-brands-svg-icons @fortawesome/vue-fontawesome",
+      value: "@fortawesome",
     },
     {
       label: "Flaticon UIcons",
-      value: "install @flaticon/flaticon-uicons",
+      value: "@flaticon/flaticon-uicons",
     },
     {
       label: "Lucide Icons",
-      value: "install @lucide/vue",
+      value: "@lucide/vue",
     },
     {
       label: "Devicon",
-      value: "install devicon",
+      value: "devicon",
     },
     {
       label: "@mdi/font",
-      value: "install @mdi/font",
+      value: "@mdi/font",
     },
   ],
 }

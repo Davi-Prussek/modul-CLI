@@ -6,8 +6,8 @@ const css_framework = handleCancel(
     await select({
     message: "Select a CSS framework:",
     options: [
-      { label: "Tailwind CSS", value: "install tailwindcss @tailwindcss/vite" },
-      { label: "Bootstrap", value: "install bootstrap" },
+      { label: "Tailwind CSS", value: "tailwindcss" },
+      { label: "Bootstrap", value: "bootstrap" },
       { label: "Default", value: "default" },
     ]}))
     return css_framework

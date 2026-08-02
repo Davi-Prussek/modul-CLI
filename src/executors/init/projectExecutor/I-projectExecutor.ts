@@ -1,4 +1,6 @@
-import { execa } from "execa";
+//Esse arquivo foi uma versão lenta e antiga do projeto
+
+/* import { execa } from "execa";
 import { spinner } from "@clack/prompts";
 import type { ConfigType } from "../../../types/ConfigType.js";
 import { cwd, stdin } from "node:process";
@@ -7,7 +9,7 @@ import path from "node:path";
 import { handleCancel } from "../../../utils/cancel.js";
 const spin = spinner();
 
-export async function projectExecutor(config: ConfigType) {
+export async function projectExecutorI(config: ConfigType) {
   //Só pra ficar mais limpo
   const projectName = config.ProjectName;
 
@@ -15,7 +17,6 @@ export async function projectExecutor(config: ConfigType) {
   const use_typeScript = config.use_typeScript;
 
   //Decidir se deve iniciar um repositório git
-  const Inicialize_repository = config.Inicialize_repository;
 
   //Separação das features pra saber se vão ser adicionadas na criação ou vão ter que ser configuradas
   const features = config.features;
@@ -82,10 +83,7 @@ export async function projectExecutor(config: ConfigType) {
       });
     }
     await execa("npm", ["install"], { cwd: currentPath });
-    /* if (!Inicialize_repository) {
-    } else {
-    } */
   } catch {
     console.log("Error during application creation or configuration!");
   }
-}
+} */

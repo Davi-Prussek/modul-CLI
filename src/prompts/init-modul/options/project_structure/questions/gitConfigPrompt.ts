@@ -1,12 +1,13 @@
-import { confirm, groupMultiselect } from "@clack/prompts";
+import { confirm, multiselect } from "@clack/prompts";
 import { handleCancel } from "./index.js"
 
-export async function gitConfigPrompt() {
+export async function gitConfigPrompt(): Promise<string[]> {
   const gitActions = handleCancel(
-    await groupMultiselect({
+    await multiselect({
       message: "",
-      options: {
-        "Git Actions": [
+      required: false,
+      options:
+        [
           {
             label: "Add README?",
             value: "readme",
@@ -21,9 +22,7 @@ export async function gitConfigPrompt() {
           },
         ],
       },
-    }),
+    ),
   );
-  return {
-    gitActions,
-  };
+    return gitActions;
 }

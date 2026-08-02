@@ -3,5 +3,7 @@ export interface ConfigType {
     use_typeScript: boolean
     features: string[]
     css_framework: string
-    Inicialize_repository: boolean
+    repository: boolean
+    gitConfig?: string[]
+    vuetify?: string
 }

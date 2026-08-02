@@ -16,7 +16,5 @@ export async function vuetifyPrompt() {
         ]
     }))
 
-    return {
-        version
-    }
+    return version;
 }

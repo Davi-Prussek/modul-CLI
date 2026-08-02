@@ -7,7 +7,7 @@ import {
 
 //Importa os executores de ações
 import { 
-  projectExecutor,
+  projectExecutorII,
   copyExecutor
 } from "../executors/index.js";
 
@@ -46,7 +46,7 @@ export async function init() {
   if (projectStructure.projectType == "project") {
 
     //Se o usuário quiser um projeto completo
-    await projectExecutor(await ConfigPrompt());
+    await projectExecutorII(await ConfigPrompt());
   } else if (projectStructure.projectType == "copy") {
 
     //Se o usuário quiser um projeto com template copiado
