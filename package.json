@@ -1,15 +1,15 @@
 {
-  "name": "modul_CLI",
+  "name": "create-modul",
   "version": "1.0.0",
   "type": "module",
   "bin": {
-    "vue-custom": "./bin/index.js"
+    "create-modul": "./bin/index.js"
   },
   "description": "A custom CLI for generating Vue.js projects with configurable templates and optional features.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc && copyfiles -u 1 \"templates/**/*\" dist && copyfiles README.md package.json dist"
   },
   "repository": {
     "type": "git",
@@ -25,18 +25,22 @@
   "dependencies": {
     "@clack/prompts": "^1.7.0",
     "@inquirer/prompts": "^8.5.2",
+    "cac": "^7.0.0",
     "chalk": "^5.6.2",
     "commander": "^15.0.0",
     "execa": "^10.0.0",
     "fast-glob": "^3.3.3",
     "fs-extra": "^11.4.0",
+    "gradient-string": "^3.0.0",
     "handlebars": "^4.7.9",
     "inquirer": "^14.0.2",
     "ora": "^9.4.1",
     "picocolors": "^1.1.1"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^26.1.1",
+    "copyfiles": "^2.4.1",
     "typescript": "^7.0.2"
   }
 }

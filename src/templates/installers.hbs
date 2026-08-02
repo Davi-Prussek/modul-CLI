@@ -1,0 +1,8 @@
+import { npm } from "../npm.js"
+
+export async function install{{name}}() {
+    await npm([
+    "install",
+    "{{package}}"
+    ])
+}
