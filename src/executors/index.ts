@@ -1,9 +1,8 @@
 import { copyExecutor } from "./init/copyExecutor.js";
 /* import { projectExecutorI } from "./init/projectExecutor/I-projectExecutor.js"; */
-import { projectExecutorII } from "./init/projectExecutor/II-projectExecutor.js";
+import { projectExecutor } from "./init/projectExecutor.js";
 
 export {
     copyExecutor,
-/*     projectExecutorI, */
-    projectExecutorII,
+    projectExecutor,
 }

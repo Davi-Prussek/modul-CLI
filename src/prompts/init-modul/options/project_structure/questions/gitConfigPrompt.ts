@@ -16,10 +16,6 @@ export async function gitConfigPrompt(): Promise<string[]> {
             label: "Use branch dev?",
             value: "branch",
           },
-          {
-            label: "Publish repository in github?",
-            value: "publish",
-          },
         ],
       },
     ),

@@ -7,7 +7,7 @@ import {
 
 //Importa os executores de ações
 import { 
-  projectExecutorII,
+  projectExecutor,
   copyExecutor
 } from "../executors/index.js";
 
@@ -24,16 +24,10 @@ import gradient from "gradient-string";
 export async function init() {
   intro(
     gradient([
-      "#42D392",
-      "#47C7A2",
-      "#52ACC4",
-      "#55A2D0",
-      "#5A96E0",
-      "#5C8DE8",
-      "#3F3BCF",
-      "#8F3DB3",
-      "#C353C3",
-    ])("Welcome to Modul CLI!"),
+  "#4C1D95",
+  "#7C3AED",
+  "#A855F7",
+])("Welcome to Modul CLI!"),
   );
   log.message(
     "A modular CLI for building modern, scalable web applications with a structured development workflow.",
@@ -46,7 +40,7 @@ export async function init() {
   if (projectStructure.projectType == "project") {
 
     //Se o usuário quiser um projeto completo
-    await projectExecutorII(await ConfigPrompt());
+    await projectExecutor(await ConfigPrompt());
   } else if (projectStructure.projectType == "copy") {
 
     //Se o usuário quiser um projeto com template copiado

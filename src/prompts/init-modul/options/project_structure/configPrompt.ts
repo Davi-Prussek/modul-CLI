@@ -12,11 +12,11 @@ import {
 export async function ConfigPrompt(): Promise<ConfigType> {
   const ProjectName = await projectName()
   const use_typeScript = await useTypeScript()
-  const features = await recursos()
   const css_framework = await cssFramework()
+  const features = await recursos()
+  const vuetify = features.includes("vuetify") ? await vuetifyPrompt() : ""
   const repository = await inicializePrompt()
   const gitConfig = repository ? await gitConfigPrompt() : []
-  const vuetify = features.includes("vuetify") ? await vuetifyPrompt() : ""
   return {
     ProjectName,
     use_typeScript,
