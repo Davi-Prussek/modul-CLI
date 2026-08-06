@@ -6,6 +6,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { execa } from "execa";
 import gradient from "gradient-string";
+import { ALL, promises } from "node:dns";
 const spin = spinner()
 export async function projectExecutor(config: ConfigType) {
   //Pegar o nome do projeto dito pelo usuário
@@ -56,15 +57,40 @@ export async function projectExecutor(config: ConfigType) {
     path.join(configPath, ".." ,"main.hbs"),
     path.join(destination, "src", "main.hbs"),
   );
+  await fs.copyFile(
+    path.join(configPath,"ignore.hbs"),
+    path.join(destination, "ignore.hbs"),
+  )
+  await fs.rename(project+"/ignore.hbs", project+"/.gitignore");
 
   //Renomeia os arquivos copiados do template selecionado para funcionarem corretamente
   if (config.use_typeScript) {
-    await fs.rename(project + "/package.hbs", project + "/package.json");
-    await fs.rename(project + "/tsconfig.app.hbs", project + "/tsconfig.app.json");
-    await fs.rename(project + "/tsconfig.hbs", project + "/tsconfig.json");
-    await fs.rename(project + "/tsconfig.node.hbs", project + "/tsconfig.node.json");
-    await fs.rename(project + "/vite.config.hbs", project + "/vite.config.ts");
-    await fs.rename(`${project}/src/main.hbs`, `${project}/src/main.ts`);
+await Promise.all([
+  await fs.rename(project + "/package.hbs", project + "/package.json"),
+  await fs.rename(project + "/tsconfig.app.hbs", project + "/tsconfig.app.json"),
+  await fs.rename(project + "/tsconfig.hbs", project + "/tsconfig.json"),
+  await fs.rename(project + "/tsconfig.node.hbs", project + "/tsconfig.node.json"),
+  await fs.rename(project + "/vite.config.hbs", project + "/vite.config.ts"),
+  await fs.rename(`${project}/src/main.hbs`, `${project}/src/main.ts`),
+  await fs.rename(`${project}/src/components/data-display/index.hbs`, `${project}/src/components/data-display/index.ts`),
+  await fs.rename(`${project}/src/components/feedback/index.hbs`, `${project}/src/components/feedback/index.ts`),
+  await fs.rename(`${project}/src/components/forms/index.hbs`, `${project}/src/components/forms/index.ts`),
+  await fs.rename(`${project}/src/components/layout/index.hbs`, `${project}/src/components/layout/index.ts`),
+  await fs.rename(`${project}/src/components/navigation/index.hbs`, `${project}/src/components/navigation/index.ts`),
+  await fs.rename(`${project}/src/components/index.hbs`, `${project}/src/components/index.ts`),
+  await fs.rename(`${project}/src/composables/index.hbs`, `${project}/src/composables/index.ts`),
+  await fs.rename(`${project}/src/constants/index.hbs`, `${project}/src/constants/index.ts`),
+  await fs.rename(`${project}/src/typescript/index.hbs`, `${project}/src/typescript/index.ts`),
+  await fs.rename(`${project}/src/typescript/classes/index.hbs`, `${project}/src/typescript/classes/index.ts`),
+  await fs.rename(`${project}/src/typescript/generics/index.hbs`, `${project}/src/typescript/generics/index.ts`),
+  await fs.rename(`${project}/src/typescript/interfaces/index.hbs`, `${project}/src/typescript/interfaces/index.ts`),
+  await fs.rename(`${project}/src/typescript/types/index.hbs`, `${project}/src/typescript/types/index.ts`),
+  await fs.rename(`${project}/src/typescript/types/guards/index.hbs`, `${project}/src/typescript/types/guards/index.ts`),
+  await fs.rename(`${project}/src/typescript/types/utility/index.hbs`, `${project}/src/typescript/types/utility/index.ts`),
+  await fs.rename(`${project}/src/utils/index.hbs`, `${project}/src/utils/index.ts`),
+  await fs.rename(`${project}/src/views/index.hbs`, `${project}/src/views/index.ts`),
+])
+
   } else {
     await fs.rename(project + "/package.hbs", project + "/package.json");
     await fs.rename(project + "/vite.config.hbs", project + "/vite.config.json");
