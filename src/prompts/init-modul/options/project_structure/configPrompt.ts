@@ -7,6 +7,7 @@ import {
   inicializePrompt,
   gitConfigPrompt,
   vuetifyPrompt,
+  piniaPersist,
 } from "./index.js"
 
 export async function ConfigPrompt(): Promise<ConfigType> {
@@ -17,6 +18,8 @@ export async function ConfigPrompt(): Promise<ConfigType> {
   const vuetify = features.includes("vuetify") ? await vuetifyPrompt() : ""
   const repository = await inicializePrompt()
   const gitConfig = repository ? await gitConfigPrompt() : []
+  const piniaPersistPlugin = features.includes('pinia') ? await piniaPersist() ? ["pinia-plugin-persistedstate"] : [] : []
+
   return {
     ProjectName,
     use_typeScript,
@@ -25,5 +28,6 @@ export async function ConfigPrompt(): Promise<ConfigType> {
     repository,
     vuetify,
     gitConfig,
+    piniaPersistPlugin,
   }
 }
