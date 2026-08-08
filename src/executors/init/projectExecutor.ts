@@ -76,11 +76,12 @@ export async function projectExecutor(config: ConfigType) {
   //Renomeia os arquivos copiados do template selecionado para funcionarem corretamente
   if (config.use_typeScript) {
 await Promise.all([
-  fs.rename(`${project}/package.hbs`,`${project}/package.ts`),
+  fs.rename(`${project}/package.hbs`,`${project}/package.json`),
   fs.rename(`${project}/tsconfig.app.hbs`,`${project}/tsconfig.app.json`),
-  fs.rename(`${project}/tsconfig.hbs`,`${project}tsconfig.json`),
+  fs.rename(`${project}/tsconfig.hbs`,`${project}/tsconfig.json`),
   fs.rename(`${project}/tsconfig.node.hbs`,`${project}/tsconfig.node.json`),
   fs.rename(`${project}/vite.config.hbs`,`${project}/vite.config.ts`),
+  fs.rename(`${project}/env.d.hbs`,`${project}/env.d.ts`),
   fs.rename(`${project}/src/main.js`,`${project}/src/main.ts`),
   fs.rename(`${project}/src/components/data-display/index.js`,`${project}/src/components/data-display/index.ts`),
   fs.rename(`${project}/src/components/feedback/index.js`,`${project}/src/components/feedback/index.ts`),
@@ -117,7 +118,8 @@ await Promise.all([
         pacote.dependencies["vue-router"] = "^5.2.0";
         await fs.cp(
           path.join(featuresPath, 'router'),
-          path.join(destination, '/src/router')
+          path.join(destination, 'src','router'),
+          {recursive: true}
         );
         if (config.use_typeScript) {
           await fs.rename(
@@ -130,12 +132,13 @@ await Promise.all([
         pacote.dependencies["pinia"] = "^4.0.2";
         await fs.cp(
           path.join(featuresPath, 'stores'),
-          path.join(destination, '/src/stores')
+          path.join(destination, 'src','stores'),
+          {recursive: true}
         );
         if (config.use_typeScript) {
           await fs.rename(
-            `${destination}/src/stores/index.js`,
-            `${destination}/src/stores/index.ts`,
+            `${destination}/src/stores/exemplo.js`,
+            `${destination}/src/stores/exemplo.ts`,
           )
         }
         break;
@@ -165,12 +168,13 @@ await Promise.all([
         pacote.dependencies["axios"] = "^1.19.0";
         await fs.cp(
           path.join(featuresPath, 'services'),
-          path.join(destination, '/src/services')
+          path.join(destination, 'src','services'),
+          {recursive: true}
         );
         if (config.use_typeScript) {
           await fs.rename(
-            `${destination}/src/services/index.js`,
-            `${destination}/src/services/index.ts`,
+            `${destination}/src/services/api.js`,
+            `${destination}/src/services/api.ts`,
           )
         }
         break;
@@ -184,7 +188,8 @@ await Promise.all([
         pacote.dependencies["zod"] = "^4.4.3";
         await fs.cp(
           path.join(featuresPath, 'schemas'),
-          path.join(destination, '/src/schemas')
+          path.join(destination, 'src','schemas'),
+          {recursive: true}
         );
         if (config.use_typeScript) {
           await fs.rename(
@@ -226,7 +231,7 @@ await Promise.all([
         pacote.dependencies["bootstrap"] = "^5.3.8";
         break;
       case "pinia-plugin-persistedstate":
-        pacote.dependences["pinia-plugin-persistedstate"] = "^4.2.0";
+        pacote.dependencies["pinia-plugin-persistedstate"] = "^4.2.0";
         break;
     }
   }
@@ -255,6 +260,6 @@ spin.stop(
     "#4C1D95",
     "#7C3AED",
     "#A855F7",
-  ])("Aplicação criada, configurada e instalada com sucesso!\n\nBons códigos meu amigo(a)!")
+  ])("Aplicação criada, configurada e instalada com sucesso!")
 );
 }
