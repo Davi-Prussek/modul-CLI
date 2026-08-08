@@ -4,7 +4,7 @@ import { handleCancel } from "./index.js"
 export async function cssFramework() {
 const css_framework = handleCancel(
     await select({
-    message: "Select a CSS framework:",
+    message: "Selecione o framework de CSS:",
     options: [
       { label: "Default", value: "default" },
       { label: "Tailwind CSS", value: "tailwindcss" },

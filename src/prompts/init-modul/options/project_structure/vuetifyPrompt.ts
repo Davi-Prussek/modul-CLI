@@ -3,7 +3,7 @@ import { handleCancel } from "./index.js"
 
 export async function vuetifyPrompt() {
     const version = handleCancel(await select({
-        message: "Select a vuetify version:",
+        message: "Selecione a versão do vuetify:",
         options: [
             {
                 label: "Vuetify",

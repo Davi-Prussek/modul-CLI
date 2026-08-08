@@ -5,7 +5,7 @@ export async function icons() {
   return handleCancel(
     await groupMultiselect({
         required: false,
-      message: "",
+      message: "Selecione a biblioteca de icones desejada:",
       options: {
         icons: [
           {

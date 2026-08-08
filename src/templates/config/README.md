@@ -29,6 +29,7 @@ Lembre-se que ele instala as dependências selecionadas na hora da criação da 
   - TypeScript
   - Vue Router
   - Pinia
+  - Pinia persist state 
   - Tailwind CSS
   - Bootstrap
   - Vuetify 

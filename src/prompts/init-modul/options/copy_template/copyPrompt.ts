@@ -3,8 +3,8 @@ import { handleCancel } from "../../../../utils/cancel.js";
 
 export async function copyPrompt() {
     const repository = handleCancel(await text({
-        message: "Enter the template repository URL or path:",
-        placeholder: "https://github.com/user/repository.git or C:\\Users\\name\\project"
+        message: "Coloque a URL do template do github:",
+        placeholder: "https://github.com/user/repository.git"
     })
     )
     return {

@@ -5,7 +5,7 @@ export async function dependences() {
   return handleCancel(
     await groupMultiselect({
       required: false,
-      message: "Select dependences:",
+      message: "Selecione as dependências desejadas:",
       options: {
         dependences: [
           {

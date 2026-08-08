@@ -5,7 +5,7 @@ export async function installers() {
   return handleCancel(
     await groupMultiselect({
         required: false,
-      message: "",
+      message: "Selecione os pacotes desejados:",
       options: {
         installers: [
           {

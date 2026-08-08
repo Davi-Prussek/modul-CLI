@@ -5,11 +5,10 @@ import type { InitType } from "../../types/initType.js"
 export async function initPrompt(): Promise<InitType> {
 
 const projectType = handleCancel( await select({
-    message: "Select an initialization mode:",
+    message: "Selecione um modo de inicialização:",
     options: [
-        {label: 'Commands only', value: 'command'},
-        {label: 'Project Structure', value: 'project'},
-        {label: 'Copy template', value: 'copy'},
+        {label: 'Projeto estruturado', value: 'project'},
+        {label: 'Copiar template', value: 'copy'},
     ]}))
 
 return {

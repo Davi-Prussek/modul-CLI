@@ -4,7 +4,7 @@ import { handleCancel } from "./index.js"
 export async function useTypeScript() {
 let useTypeScript = handleCancel(
     await confirm({
-    message: "Use TypeScript?",
+    message: "Usar TypeScript?",
   })
   )
     return useTypeScript

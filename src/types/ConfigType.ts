@@ -6,5 +6,5 @@ export interface ConfigType {
     repository: boolean
     gitConfig?: string[]
     vuetify?: string
-    piniaPersistPlugin?: string[]
+    piniaPersistPlugin?: boolean
 }

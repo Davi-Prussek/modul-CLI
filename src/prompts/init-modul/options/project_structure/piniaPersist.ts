@@ -4,7 +4,7 @@ import { handleCancel } from "./index.js"
 export async function piniaPersist() {
     return handleCancel(
         await confirm({
-            message: 'Use Pinia Persisted State?'
+            message: 'Usar o plugin de persistência de estado do pinia?'
         })
     )
 }

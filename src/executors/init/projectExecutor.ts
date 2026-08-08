@@ -11,7 +11,7 @@ const spin = spinner()
 export async function projectExecutor(config: ConfigType) {
   //Pegar o nome do projeto dito pelo usuário
   const project = config.ProjectName;
-
+  
   //Pegar a decisão de iniciar um repositório no git ou não
   const inicialize = config.repository;
   //Pegar as ações de git do projeto
@@ -50,6 +50,16 @@ export async function projectExecutor(config: ConfigType) {
     "config",
     config.use_typeScript ? "TS" : "JS",
   );
+
+  const featuresPath = path.join(
+    __dirname,
+    "..",
+    "..",
+    "..",
+    "dist",
+    "templates",
+    "features",
+  );
   await fs.cp(configPath, destination, {
     recursive: true,
   });
@@ -72,23 +82,23 @@ await Promise.all([
   fs.rename(`${project}/tsconfig.node.hbs`,`${project}/tsconfig.node.json`),
   fs.rename(`${project}/vite.config.hbs`,`${project}/vite.config.ts`),
   fs.rename(`${project}/src/main.hbs`,`${project}/src/main.ts`),
-  fs.rename(`${project}/src/components/data-display/index.hbs`,`${project}/src/components/data-display/index.ts`),
-  fs.rename(`${project}/src/components/feedback/index.hbs`,`${project}/src/components/feedback/index.ts`),
-  fs.rename(`${project}/src/components/forms/index.hbs`,`${project}/src/components/forms/index.ts`),
-  fs.rename(`${project}/src/components/layout/index.hbs`,`${project}/src/components/layout/index.ts`),
-  fs.rename(`${project}/src/components/navigation/index.hbs`,`${project}/src/components/navigation/index.ts`),
-  fs.rename(`${project}/src/components/index.hbs`,`${project}/src/components/index.ts`),
-  fs.rename(`${project}/src/composables/index.hbs`,`${project}/src/composables/index.ts`),
-  fs.rename(`${project}/src/constants/index.hbs`,`${project}/src/constants/index.ts`),
-  fs.rename(`${project}/src/typescript/index.hbs`,`${project}/src/typescript/index.ts`),
-  fs.rename(`${project}/src/typescript/classes/index.hbs`,`${project}/src/typescript/classes/index.ts`),
-  fs.rename(`${project}/src/typescript/generics/index.hbs`,`${project}/src/typescript/generics/index.ts`),
-  fs.rename(`${project}/src/typescript/interfaces/index.hbs`,`${project}/src/typescript/interfaces/index.ts`),
-  fs.rename(`${project}/src/typescript/types/index.hbs`,`${project}/src/typescript/types/index.ts`),
-  fs.rename(`${project}/src/typescript/types/guards/index.hbs`,`${project}/src/typescript/types/guards/index.ts`),
-  fs.rename(`${project}/src/typescript/types/utility/index.hbs`,`${project}/src/typescript/types/utility/index.ts`),
-  fs.rename(`${project}/src/utils/index.hbs`,`${project}/src/utils/index.ts`),
-  fs.rename(`${project}/src/views/index.hbs`,`${project}/src/views/index.ts`),
+  fs.rename(`${project}/src/components/data-display/index.js`,`${project}/src/components/data-display/index.ts`),
+  fs.rename(`${project}/src/components/feedback/index.js`,`${project}/src/components/feedback/index.ts`),
+  fs.rename(`${project}/src/components/forms/index.js`,`${project}/src/components/forms/index.ts`),
+  fs.rename(`${project}/src/components/layout/index.js`,`${project}/src/components/layout/index.ts`),
+  fs.rename(`${project}/src/components/navigation/index.js`,`${project}/src/components/navigation/index.ts`),
+  fs.rename(`${project}/src/components/index.js`,`${project}/src/components/index.ts`),
+  fs.rename(`${project}/src/composables/index.js`,`${project}/src/composables/index.ts`),
+  fs.rename(`${project}/src/constants/index.js`,`${project}/src/constants/index.ts`),
+  fs.rename(`${project}/src/typescript/index.js`,`${project}/src/typescript/index.ts`),
+  fs.rename(`${project}/src/typescript/classes/index.js`,`${project}/src/typescript/classes/index.ts`),
+  fs.rename(`${project}/src/typescript/generics/index.js`,`${project}/src/typescript/generics/index.ts`),
+  fs.rename(`${project}/src/typescript/interfaces/index.js`,`${project}/src/typescript/interfaces/index.ts`),
+  fs.rename(`${project}/src/typescript/types/index.js`,`${project}/src/typescript/types/index.ts`),
+  fs.rename(`${project}/src/typescript/types/guards/index.js`,`${project}/src/typescript/types/guards/index.ts`),
+  fs.rename(`${project}/src/typescript/types/utility/index.js`,`${project}/src/typescript/types/utility/index.ts`),
+  fs.rename(`${project}/src/utils/index.js`,`${project}/src/utils/index.ts`),
+  fs.rename(`${project}/src/views/index.js`,`${project}/src/views/index.ts`),
 ])
 
   } else {
@@ -100,13 +110,30 @@ await Promise.all([
     await fs.readFile(project + "/package.json", "utf8"),
   );
   pacote.name = project;
+  if (config.piniaPersistPlugin) {config.features.push("pinia-plugin-persistedstate")};
   for (const item of config.features) {
     switch (item) {
       case "router":
         pacote.dependencies["vue-router"] = "^5.2.0";
+        await fs.cp(
+          path.join(featuresPath, 'router'),
+          path.join(destination, '/src/router')
+        );
+        await fs.rename(
+          `${destination}/src/router/index.hbs`,
+          `${destination}/src/router/index.ts`
+        )
         break;
       case "pinia":
         pacote.dependencies["pinia"] = "^4.0.2";
+        await fs.cp(
+          path.join(featuresPath, 'stores'),
+          path.join(destination, '/src/stores')
+        );
+        await fs.rename(
+          `${destination}/src/stores/exemplo.hbs`,
+          `${destination}/src/stores/exemplo.ts`
+        )
         break;
       case "eslint":
         pacote.scripts["lint"] = 'run-s "lint:*"';
@@ -132,6 +159,14 @@ await Promise.all([
         break;
       case "axios":
         pacote.dependencies["axios"] = "^1.19.0";
+        await fs.cp(
+          path.join(featuresPath, 'services'),
+          path.join(destination, '/src/services')
+        );
+        await fs.rename(
+          `${destination}/src/services/api.hbs`,
+          `${destination}/src/services/api.ts`
+        )
         break;
       case "@vueuse/core":
         pacote.dependencies["@vueuse/core"] = "^14.4.0";
@@ -141,6 +176,14 @@ await Promise.all([
         break;
       case "zod":
         pacote.dependencies["zod"] = "^4.4.3";
+        await fs.cp(
+          path.join(featuresPath, 'schemas'),
+          path.join(destination, '/src/schemas')
+        );
+        await fs.rename(
+          `${destination}/src/schemas/index.hbs`,
+          `${destination}/src/schemas/index.ts`
+        )
         break;
       case "vuetify":
         if (config.features.includes("vuetify")) {
@@ -173,6 +216,9 @@ await Promise.all([
         break;
       case "bootstrap":
         pacote.dependencies["bootstrap"] = "^5.3.8";
+        break;
+      case "pinia-plugin-persistedstate":
+        pacote.dependences["pinia-plugin-persistedstate"] = "^4.2.0";
         break;
     }
   }

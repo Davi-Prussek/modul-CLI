@@ -4,16 +4,16 @@ import { handleCancel } from "./index.js"
 export async function gitConfigPrompt(): Promise<string[]> {
   const gitActions = handleCancel(
     await multiselect({
-      message: "",
+      message: "Configurações de git:",
       required: false,
       options:
         [
           {
-            label: "Add README?",
+            label: "Adicionar README.md padrão?",
             value: "readme",
           },
           {
-            label: "Use branch dev?",
+            label: "Usar a branch dev?",
             value: "branch",
           },
         ],
