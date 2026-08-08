@@ -7,7 +7,7 @@ O Modul CLI é uma CLI para Vue.js com uma abordagem opinativa que automatiza ta
 ## Sumário
 
 - [Core](#core)
-- [Instalaçao](#instalação)
+- [Instalação](#instalação)
 - [Comandos das Views](#view-Commands)
 - [Comandos das Sections](#section-commands)
 - [Comandos dos Componentes](#component-commands)
