@@ -2,19 +2,19 @@
 
 ## Description
 
-Modul CLI is an opinionated CLI for Vue.js that automates repetitive tasks, standardizes project structure, and accelerates development. Beyond project scaffolding, it provides intelligent commands to generate and organize views, components, sections, and other resources while maintaining a clean, consistent, and scalable architecture.
+O Modul CLI é uma CLI para Vue.js com uma abordagem opinativa que automatiza tarefas repetitivas, padroniza a estrutura do projeto e acelera a criação e o desenvolvimento. Além de configurar a estrutura inicial do projeto, ele oferece comandos inteligentes para gerar e organizar views, componentes, seções e outros recursos, mantendo uma arquitetura limpa, consistente e escalável.
 
-## Summary
+## Sumário
 
 - [Core](#core)
-- [Installation](#installation)
-- [View commands](#view-Commands)
-- [Section commands](#section-commands)
-- [Component commands](#component-commands)
+- [Instalação](#instalação)
+- [Comandos das Views](#view-Commands)
+- [Comandos das Sections](#section-commands)
+- [Comandos dos Componentes](#component-commands)
 
 ## Features
 
-During project creation, you can choose which technologies and tools should be included in your application.
+Durante a criação do projeto, você pode escolher quais tecnologias e ferramentas devem ser incluídas em sua aplicação.
 
 ## Core
 
@@ -29,7 +29,6 @@ During project creation, you can choose which technologies and tools should be i
 - Zod
 - Vue I18n
 - Pinia Plugin Persisted State
-- Dotenv (.env support)
 - Font Awesome
 - Flaticon UIcons
 - Vue DevTools
@@ -39,11 +38,11 @@ During project creation, you can choose which technologies and tools should be i
 - End-to-End Testing
 - More integrations will be added over time.
 
-## Installation
+## Instalação
 
 ### npm init modul@latest
 
-This command is the custom launcher, where it will ask:
+Este comando é o inicializador personalizado, que perguntará:
 
 ```markdown
 - Project name
@@ -52,12 +51,11 @@ This command is the custom launcher, where it will ask:
 - Features
 - CSS framework
 ```
+E isso cria o ambiente personalizado necessário para executar todos os comandos com o prefixo `modul`.
 
-And it creates the personalized environment needed to execute all the commands with prefix `modul`.
+Depois disso, ele executa automaticamente o `npm install`.
 
-After that, it automatically runs `npm install`.
-
-Finally, the CLI creates the following project structure:
+Por fim, a CLI cria a seguinte estrutura de projeto:
 
 ```markdown
 
@@ -116,7 +114,7 @@ Finally, the CLI creates the following project structure:
 
 ## Commands
 
-The CLI provides commands for the faster and more organized creation of components, views, or view sections, featuring cleaner exports and the option to define responsiveness configurations at the time of component creation.
+A CLI disponibiliza comandos para a criação mais rápida e organizada de componentes, views ou seções de view, oferecendo exportações mais limpas e a opção de definir configurações de responsividade no momento da criação do componente.
 
 ---
 
