@@ -64,8 +64,8 @@ export async function projectExecutor(config: ConfigType) {
     recursive: true,
   });
   await fs.copyFile(
-    path.join(configPath, ".." ,"main.hbs"),
-    path.join(destination, "src", "main.hbs"),
+    path.join(configPath, ".." ,"main.js"),
+    path.join(destination, "src", "main.js"),
   );
   await fs.copyFile(
     path.join(configPath,"ignore.hbs"),
@@ -81,7 +81,7 @@ await Promise.all([
   fs.rename(`${project}/tsconfig.hbs`,`${project}tsconfig.json`),
   fs.rename(`${project}/tsconfig.node.hbs`,`${project}/tsconfig.node.json`),
   fs.rename(`${project}/vite.config.hbs`,`${project}/vite.config.ts`),
-  fs.rename(`${project}/src/main.hbs`,`${project}/src/main.ts`),
+  fs.rename(`${project}/src/main.js`,`${project}/src/main.ts`),
   fs.rename(`${project}/src/components/data-display/index.js`,`${project}/src/components/data-display/index.ts`),
   fs.rename(`${project}/src/components/feedback/index.js`,`${project}/src/components/feedback/index.ts`),
   fs.rename(`${project}/src/components/forms/index.js`,`${project}/src/components/forms/index.ts`),
