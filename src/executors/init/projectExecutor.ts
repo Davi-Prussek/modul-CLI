@@ -119,10 +119,12 @@ await Promise.all([
           path.join(featuresPath, 'router'),
           path.join(destination, '/src/router')
         );
-        await fs.rename(
-          `${destination}/src/router/index.hbs`,
-          `${destination}/src/router/index.ts`
-        )
+        if (config.use_typeScript) {
+          await fs.rename(
+            `${destination}/src/router/index.js`,
+            `${destination}/src/router/index.ts`,
+          )
+        }
         break;
       case "pinia":
         pacote.dependencies["pinia"] = "^4.0.2";
@@ -130,10 +132,12 @@ await Promise.all([
           path.join(featuresPath, 'stores'),
           path.join(destination, '/src/stores')
         );
-        await fs.rename(
-          `${destination}/src/stores/exemplo.hbs`,
-          `${destination}/src/stores/exemplo.ts`
-        )
+        if (config.use_typeScript) {
+          await fs.rename(
+            `${destination}/src/stores/index.js`,
+            `${destination}/src/stores/index.ts`,
+          )
+        }
         break;
       case "eslint":
         pacote.scripts["lint"] = 'run-s "lint:*"';
@@ -163,10 +167,12 @@ await Promise.all([
           path.join(featuresPath, 'services'),
           path.join(destination, '/src/services')
         );
-        await fs.rename(
-          `${destination}/src/services/api.hbs`,
-          `${destination}/src/services/api.ts`
-        )
+        if (config.use_typeScript) {
+          await fs.rename(
+            `${destination}/src/services/index.js`,
+            `${destination}/src/services/index.ts`,
+          )
+        }
         break;
       case "@vueuse/core":
         pacote.dependencies["@vueuse/core"] = "^14.4.0";
@@ -180,10 +186,12 @@ await Promise.all([
           path.join(featuresPath, 'schemas'),
           path.join(destination, '/src/schemas')
         );
-        await fs.rename(
-          `${destination}/src/schemas/index.hbs`,
-          `${destination}/src/schemas/index.ts`
-        )
+        if (config.use_typeScript) {
+          await fs.rename(
+            `${destination}/src/schemas/index.js`,
+            `${destination}/src/schemas/index.ts`,
+          )
+        }
         break;
       case "vuetify":
         if (config.features.includes("vuetify")) {
