@@ -1,5 +1,5 @@
 import { text } from "@clack/prompts";
-import { handleCancel } from "../../../../utils/cancel.js";
+import { handleCancel } from "../../../utils/cancel.js";
 
 export async function copyPrompt() {
     const repository = handleCancel(await text({

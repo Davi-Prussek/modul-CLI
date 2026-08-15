@@ -6,6 +6,7 @@ export async function projectName(): Promise<string> {
     await text({
       message: "Nome do projeto:",
       placeholder: "modul-project",
+      defaultValue: 'modul-project',
     })
   ).trim() || "modul-project"
 }

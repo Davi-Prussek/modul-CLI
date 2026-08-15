@@ -7,11 +7,11 @@ import { fileURLToPath } from "node:url";
 import { execa } from "execa";
 import gradient from "gradient-string";
 import { ALL, promises } from "node:dns";
-const spin = spinner()
+const spin = spinner();
 export async function projectExecutor(config: ConfigType) {
   //Pegar o nome do projeto dito pelo usuário
   const project = config.ProjectName;
-  
+
   //Pegar a decisão de iniciar um repositório no git ou não
   const inicialize = config.repository;
   //Pegar as ações de git do projeto
@@ -64,82 +64,148 @@ export async function projectExecutor(config: ConfigType) {
     recursive: true,
   });
   await fs.copyFile(
-    path.join(configPath, ".." ,"main.js"),
+    path.join(configPath, "..", "main.js"),
     path.join(destination, "src", "main.js"),
   );
   await fs.copyFile(
-    path.join(configPath,"ignore.hbs"),
+    path.join(configPath, "ignore.hbs"),
     path.join(destination, "ignore.hbs"),
-  )
-  await fs.rename(project+"/ignore.hbs", project+"/.gitignore");
+  );
+  await fs.rename(project + "/ignore.hbs", project + "/.gitignore");
 
   //Renomeia os arquivos copiados do template selecionado para funcionarem corretamente
   if (config.use_typeScript) {
-await Promise.all([
-  fs.rename(`${project}/package.hbs`,`${project}/package.json`),
-  fs.rename(`${project}/tsconfig.app.hbs`,`${project}/tsconfig.app.json`),
-  fs.rename(`${project}/tsconfig.hbs`,`${project}/tsconfig.json`),
-  fs.rename(`${project}/tsconfig.node.hbs`,`${project}/tsconfig.node.json`),
-  fs.rename(`${project}/vite.config.hbs`,`${project}/vite.config.ts`),
-  fs.rename(`${project}/env.d.hbs`,`${project}/env.d.ts`),
-  fs.rename(`${project}/src/main.js`,`${project}/src/main.ts`),
-  fs.rename(`${project}/src/components/data-display/index.js`,`${project}/src/components/data-display/index.ts`),
-  fs.rename(`${project}/src/components/feedback/index.js`,`${project}/src/components/feedback/index.ts`),
-  fs.rename(`${project}/src/components/forms/index.js`,`${project}/src/components/forms/index.ts`),
-  fs.rename(`${project}/src/components/layout/index.js`,`${project}/src/components/layout/index.ts`),
-  fs.rename(`${project}/src/components/navigation/index.js`,`${project}/src/components/navigation/index.ts`),
-  fs.rename(`${project}/src/components/index.js`,`${project}/src/components/index.ts`),
-  fs.rename(`${project}/src/composables/index.js`,`${project}/src/composables/index.ts`),
-  fs.rename(`${project}/src/constants/index.js`,`${project}/src/constants/index.ts`),
-  fs.rename(`${project}/src/typescript/index.js`,`${project}/src/typescript/index.ts`),
-  fs.rename(`${project}/src/typescript/classes/index.js`,`${project}/src/typescript/classes/index.ts`),
-  fs.rename(`${project}/src/typescript/generics/index.js`,`${project}/src/typescript/generics/index.ts`),
-  fs.rename(`${project}/src/typescript/interfaces/index.js`,`${project}/src/typescript/interfaces/index.ts`),
-  fs.rename(`${project}/src/typescript/types/index.js`,`${project}/src/typescript/types/index.ts`),
-  fs.rename(`${project}/src/typescript/types/guards/index.js`,`${project}/src/typescript/types/guards/index.ts`),
-  fs.rename(`${project}/src/typescript/types/utility/index.js`,`${project}/src/typescript/types/utility/index.ts`),
-  fs.rename(`${project}/src/utils/index.js`,`${project}/src/utils/index.ts`),
-  fs.rename(`${project}/src/views/index.js`,`${project}/src/views/index.ts`),
-])
-
+    await Promise.all([
+      fs.rename(`${project}/package.hbs`, `${project}/package.json`),
+      fs.rename(`${project}/tsconfig.app.hbs`, `${project}/tsconfig.app.json`),
+      fs.rename(`${project}/tsconfig.hbs`, `${project}/tsconfig.json`),
+      fs.rename(
+        `${project}/tsconfig.node.hbs`,
+        `${project}/tsconfig.node.json`,
+      ),
+      fs.rename(`${project}/vite.config.hbs`, `${project}/vite.config.ts`),
+      fs.rename(`${project}/env.d.hbs`, `${project}/env.d.ts`),
+      fs.rename(`${project}/src/main.js`, `${project}/src/main.ts`),
+      fs.rename(
+        `${project}/src/components/data-display/index.js`,
+        `${project}/src/components/data-display/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/components/feedback/index.js`,
+        `${project}/src/components/feedback/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/components/forms/index.js`,
+        `${project}/src/components/forms/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/components/layout/index.js`,
+        `${project}/src/components/layout/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/components/navigation/index.js`,
+        `${project}/src/components/navigation/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/components/index.js`,
+        `${project}/src/components/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/composables/index.js`,
+        `${project}/src/composables/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/constants/index.js`,
+        `${project}/src/constants/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/typescript/index.js`,
+        `${project}/src/typescript/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/typescript/classes/index.js`,
+        `${project}/src/typescript/classes/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/typescript/generics/index.js`,
+        `${project}/src/typescript/generics/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/typescript/interfaces/index.js`,
+        `${project}/src/typescript/interfaces/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/typescript/types/index.js`,
+        `${project}/src/typescript/types/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/typescript/types/guards/index.js`,
+        `${project}/src/typescript/types/guards/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/typescript/types/utility/index.js`,
+        `${project}/src/typescript/types/utility/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/utils/index.js`,
+        `${project}/src/utils/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/views/index.js`,
+        `${project}/src/views/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/assets/fonts/index.js`,
+        `${project}/src/assets/fonts/index.ts`,
+      ),
+      fs.rename(
+        `${project}/src/assets/images/index.js`,
+        `${project}/src/assets/images/index.ts`,
+      ),
+    ]);
   } else {
     await fs.rename(project + "/package.hbs", project + "/package.json");
-    await fs.rename(project + "/vite.config.hbs", project + "/vite.config.json");
+    await fs.rename(project + "/vite.config.hbs", project + "/vite.config.js");
   }
   //Isso aqui simplesmente pega o JSON e o transforma em um OBJETO, muito incrível kkkkk
   const pacote = JSON.parse(
     await fs.readFile(project + "/package.json", "utf8"),
   );
   pacote.name = project;
-  if (config.piniaPersistPlugin) {config.features.push("pinia-plugin-persistedstate")};
+  if (config.piniaPersistPlugin) {
+    config.features.push("pinia-plugin-persistedstate");
+  }
+  if (config.css_framework !== "default") {
+    config.features.push(config.css_framework);
+  }
   for (const item of config.features) {
     switch (item) {
       case "router":
         pacote.dependencies["vue-router"] = "^5.2.0";
         await fs.cp(
-          path.join(featuresPath, 'router'),
-          path.join(destination, 'src','router'),
-          {recursive: true}
+          path.join(featuresPath, "router"),
+          path.join(destination, "src", "router"),
+          { recursive: true },
         );
         if (config.use_typeScript) {
           await fs.rename(
             `${destination}/src/router/index.js`,
             `${destination}/src/router/index.ts`,
-          )
+          );
         }
         break;
       case "pinia":
         pacote.dependencies["pinia"] = "^4.0.2";
         await fs.cp(
-          path.join(featuresPath, 'stores'),
-          path.join(destination, 'src','stores'),
-          {recursive: true}
+          path.join(featuresPath, "stores"),
+          path.join(destination, "src", "stores"),
+          { recursive: true },
         );
         if (config.use_typeScript) {
           await fs.rename(
             `${destination}/src/stores/exemplo.js`,
             `${destination}/src/stores/exemplo.ts`,
-          )
+          );
         }
         break;
       case "eslint":
@@ -167,15 +233,15 @@ await Promise.all([
       case "axios":
         pacote.dependencies["axios"] = "^1.19.0";
         await fs.cp(
-          path.join(featuresPath, 'services'),
-          path.join(destination, 'src','services'),
-          {recursive: true}
+          path.join(featuresPath, "services"),
+          path.join(destination, "src", "services"),
+          { recursive: true },
         );
         if (config.use_typeScript) {
           await fs.rename(
             `${destination}/src/services/api.js`,
             `${destination}/src/services/api.ts`,
-          )
+          );
         }
         break;
       case "@vueuse/core":
@@ -187,15 +253,15 @@ await Promise.all([
       case "zod":
         pacote.dependencies["zod"] = "^4.4.3";
         await fs.cp(
-          path.join(featuresPath, 'schemas'),
-          path.join(destination, 'src','schemas'),
-          {recursive: true}
+          path.join(featuresPath, "schemas"),
+          path.join(destination, "src", "schemas"),
+          { recursive: true },
         );
         if (config.use_typeScript) {
           await fs.rename(
             `${destination}/src/schemas/index.js`,
             `${destination}/src/schemas/index.ts`,
-          )
+          );
         }
         break;
       case "vuetify":
@@ -226,9 +292,37 @@ await Promise.all([
       case "tailwindcss":
         pacote.dependencies["tailwindcss"] = "^4.3.3";
         pacote.dependencies["@tailwindcss/vite"] = "^4.3.3";
+
+        await fs.writeFile(
+          `${destination}/src/assets/styles/main.css`,
+          `@import "./reset.css";\n@import "tailwindcss";`,);
+
+        const viteConfigLines: string[] = config.use_typeScript
+          ? (await fs.readFile(`${destination}/vite.config.ts`, "utf8")).split(/\r?\n/,)
+          : (await fs.readFile(`${destination}/vite.config.js`, "utf8")).split(/\r?\n/,);
+
+        const tailwindImportIndex: number = viteConfigLines.indexOf(`import vueDevTools from 'vite-plugin-vue-devtools'`,);
+        viteConfigLines.splice(tailwindImportIndex,0,`import tailwindcss from '@tailwindcss/vite'`,);
+
+        const tailwindPluginIndex: number = viteConfigLines.indexOf(`    vueDevTools(),`);
+        viteConfigLines.splice(tailwindPluginIndex + 1,0,`    tailwindcss(),`,);
+
+        config.use_typeScript
+          ? await fs.writeFile(`${destination}/vite.config.ts`,viteConfigLines.join("\n"),"utf8",)
+          : await fs.writeFile(`${destination}/vite.config.js`,viteConfigLines.join("\n"),"utf8",);
         break;
       case "bootstrap":
         pacote.dependencies["bootstrap"] = "^5.3.8";
+        const mainFileLines: string[] = config.use_typeScript
+          ? (await fs.readFile(`${destination}/src/main.ts`, `utf8`)).split(/\r?\n/,)
+          : (await fs.readFile(`${destination}/src/main.js`, `utf8`)).split(/\r?\n/,);
+
+        const appImportIndex = mainFileLines.indexOf(`import App from './App.vue'`,);
+        mainFileLines.splice(appImportIndex + 1,0,`import "bootstrap/dist/css/bootstrap.min.css"\nimport "bootstrap"`,);
+
+        config.use_typeScript
+          ? await fs.writeFile(`${destination}/src/main.ts`,mainFileLines.join("\n"),"utf8",)
+          : await fs.writeFile(`${destination}/src/main.js`,mainFileLines.join("\n"),"utf8",);
         break;
       case "pinia-plugin-persistedstate":
         pacote.dependencies["pinia-plugin-persistedstate"] = "^4.2.0";
@@ -243,7 +337,7 @@ await Promise.all([
     await execa("git", ["init"], { cwd: destination });
     if (config.gitConfig?.includes("readme")) {
       await fs.copyFile(
-        path.join(configPath, "..","README.md"),
+        path.join(configPath, "..", "README.md"),
         path.join(destination, "README.md"),
       );
     }
@@ -251,15 +345,13 @@ await Promise.all([
       await execa("git", ["switch", "-C", "dev"], { cwd: destination });
     }
   }
-spin.start(
-  "Instalando as dependências, pode demorar um pouco dependendo de quantidade selecionada..."
-);
-await execa("npm", ["install"], { cwd: destination });
-spin.stop(
-  gradient([
-    "#4C1D95",
-    "#7C3AED",
-    "#A855F7",
-  ])("Aplicação criada, configurada e instalada com sucesso!")
-);
+  spin.start(
+    "Instalando as dependências, pode demorar um pouco dependendo de quantidade selecionada...",
+  );
+  /* await execa("npm", ["install"], { cwd: destination }); */
+  spin.stop(
+    gradient(["#4C1D95", "#7C3AED", "#A855F7"])(
+      "Aplicação criada, configurada e instalada com sucesso!",
+    ),
+  );
 }
