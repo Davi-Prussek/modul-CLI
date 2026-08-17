@@ -220,6 +220,9 @@ export async function projectExecutor(config: ConfigType) {
       case "prettier":
         pacote.devDependencies["prettier"] = "3.9.5";
         pacote.scripts["format"] = "prettier --write --experimental-cli src/";
+        await fs.writeFile(path.join(destination,'.prettierrc.json'), 
+          `{\n  "$schema": "https://json.schemastore.org/prettierrc",\n  "semi": false,\n  "singleQuote": true,\n  "printWidth": 100,\n  "trailingComma": "all"\n}`
+        )
         break;
       case "vitest":
         pacote.scripts["test:unit"] = "vitest";
